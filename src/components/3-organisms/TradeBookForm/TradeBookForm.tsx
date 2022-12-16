@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import tw from 'twin.macro';
 import { Button, Form, Input } from 'antd';
 import { FormikHandlers, FormikErrors } from 'formik';
-import { getBookForm } from '../../../lib/api/API';
-import { BookForm } from './types';
 import { BookFormData } from '../../../pages/book/BookFormTypes';
 
 interface Props {
@@ -26,19 +24,7 @@ interface Props {
 
 export const TradeBookForm: React.FC<Props> = (props) => {
   const { handleChange, handleSubmit, formData, errors } = props;
-  // const [data, setData] = useState<BookForm | null>(null);
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const response = await getBookForm();
-  //       console.log(response, 'resss');
-  //       setData(response);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   })();
-  // }, []);
-  console.log(formData, 'formData');
+
   return (
     <Container>
       <Form
