@@ -10,7 +10,7 @@ import { TradeBookForm } from '../TradeBookForm';
 import { message } from 'antd';
 import { BookContext } from '../../../context/bookContext';
 import { AppContext } from '../../../context/appContext';
-
+import Image from 'next/image';
 export interface BookState {
   name: string;
   title: string;
@@ -122,7 +122,11 @@ export const Header: React.FC = () => {
           <TradeBookForm handleChange={handleChange} errors={errors} />
         </Modal>
         <LogoContainer>
-          <Logo src={require('../../../asset/SVG.png')} />
+          <Image
+            alt=""
+            src={require('../../../asset/SVG.png')}
+            className="w-full h-full"
+          />
         </LogoContainer>
 
         <NavItems>
@@ -151,6 +155,5 @@ export const Header: React.FC = () => {
 const Container = tw.div`h-20 flex items-center justify-between border-b-2 border-gray-400`;
 const SubContainer = tw.div`h-full flex items-center`;
 const LogoContainer = tw.div`w-12 h-12 object-contain flex items-center mx-10`;
-const Logo = tw.img`w-full h-full`;
 const NavItems = tw.div`flex gap-x-[70px] pl-32`;
 const LogoutContainer = tw.div`w-40`;

@@ -6,7 +6,7 @@ import { StarFilled } from '@ant-design/icons';
 import { updateBookApi } from '../../../lib/api/API';
 import { BuyNowModal } from '../../3-organisms/BuyNowModal/BuyNowModal';
 import { BookContext } from '../../../context/bookContext';
-
+import Image from 'next/image';
 interface Props {
   data: Book;
 }
@@ -73,7 +73,7 @@ export const BookCard: React.FC<Props> = (props) => {
         />
         <SubContainer>
           <ImageContainer>
-            <img
+            <Image
               className="h-full w-full"
               src={require('../../../asset/bookImage.png')}
               alt=""
