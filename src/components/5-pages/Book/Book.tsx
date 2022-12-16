@@ -55,7 +55,12 @@ export const BookPage: () => JSX.Element = () => {
       try {
         const token = sessionStorage.getItem('token');
         response = await createBookApi(
-          { ...values, owner_id: user.id },
+          {
+            ...values,
+            owner_id: user.id,
+            price: Number(values.price),
+            category: String(values.category),
+          },
           String(token)
         );
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
@@ -66,7 +71,7 @@ export const BookPage: () => JSX.Element = () => {
             duration: 2,
           });
           console.log(response, 'res');
-          // router(0);
+          route.push('/home');
         } else {
           message.error({
             content: 'Error',
@@ -77,15 +82,18 @@ export const BookPage: () => JSX.Element = () => {
       } catch (error) {
         console.log(error);
       }
-      route.push('/home');
     },
   });
 
   return (
     <Container>
-      <TradeBookForm handleChange={handleChange} errors={errors} />
+      <TradeBookForm
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        errors={errors}
+      />
     </Container>
   );
 };
 
-const Container = tw.div`px-72 pt-16 pb-16`;
+const Container = tw.div`px-72 pt-12 pb-8`;

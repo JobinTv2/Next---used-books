@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import tw from 'twin.macro';
-import { Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { FormikHandlers, FormikErrors } from 'formik';
 import { getBookForm } from '../../../lib/api/API';
 import { BookForm } from './types';
 
 interface Props {
   handleChange: FormikHandlers['handleChange'];
+  handleSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void;
   errors: FormikErrors<{
     name: string;
     title: string;
@@ -20,8 +21,9 @@ interface Props {
     price: number;
   }>;
 }
+
 export const TradeBookForm: React.FC<Props> = (props) => {
-  const { handleChange, errors } = props;
+  const { handleChange, handleSubmit, errors } = props;
   const [data, setData] = useState<BookForm | null>(null);
   useEffect(() => {
     (async () => {
@@ -36,7 +38,13 @@ export const TradeBookForm: React.FC<Props> = (props) => {
 
   return (
     <Container>
-      <Form layout="vertical" className="w-full">
+      <Form
+        layout="vertical"
+        className="w-full"
+        onFinish={() => {
+          handleSubmit();
+        }}
+      >
         {data?.items?.[0].fields.inputs.map((item) => {
           const field = data?.includes.Entry.find(
             (el) => el.sys.id === item.sys.id
@@ -63,6 +71,11 @@ export const TradeBookForm: React.FC<Props> = (props) => {
             </Form.Item>
           );
         })}
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
       </Form>
     </Container>
   );
