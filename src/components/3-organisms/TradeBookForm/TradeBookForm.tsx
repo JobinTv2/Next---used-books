@@ -4,10 +4,12 @@ import { Button, Form, Input } from 'antd';
 import { FormikHandlers, FormikErrors } from 'formik';
 import { getBookForm } from '../../../lib/api/API';
 import { BookForm } from './types';
+import { BookFormData } from '../../../pages/book/BookFormTypes';
 
 interface Props {
   handleChange: FormikHandlers['handleChange'];
   handleSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void;
+  formData: BookFormData;
   errors: FormikErrors<{
     name: string;
     title: string;
@@ -23,19 +25,20 @@ interface Props {
 }
 
 export const TradeBookForm: React.FC<Props> = (props) => {
-  const { handleChange, handleSubmit, errors } = props;
-  const [data, setData] = useState<BookForm | null>(null);
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await getBookForm();
-        setData(response);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
-
+  const { handleChange, handleSubmit, formData, errors } = props;
+  // const [data, setData] = useState<BookForm | null>(null);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const response = await getBookForm();
+  //       console.log(response, 'resss');
+  //       setData(response);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   })();
+  // }, []);
+  console.log(formData, 'formData');
   return (
     <Container>
       <Form
@@ -45,8 +48,8 @@ export const TradeBookForm: React.FC<Props> = (props) => {
           handleSubmit();
         }}
       >
-        {data?.items?.[0].fields.inputs.map((item) => {
-          const field = data?.includes.Entry.find(
+        {formData?.items?.[0].fields.inputs.map((item) => {
+          const field = formData?.includes.Entry.find(
             (el) => el.sys.id === item.sys.id
           );
           return (

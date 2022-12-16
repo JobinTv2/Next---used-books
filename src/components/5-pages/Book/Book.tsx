@@ -9,6 +9,7 @@ import { message } from 'antd';
 import { BookContext } from '../../../context/bookContext';
 import { AppContext } from '../../../context/appContext';
 import { useRouter } from 'next/router';
+import { BookFormData } from '../../../pages/book/BookFormTypes';
 
 const tradeBookSchema = Yup.object().shape({
   name: Yup.string().required(),
@@ -23,7 +24,10 @@ const tradeBookSchema = Yup.object().shape({
   price: Yup.number().required().min(1),
 });
 
-export const BookPage: () => JSX.Element = () => {
+export const BookPage: (props: { formData: BookFormData }) => JSX.Element = (
+  props
+) => {
+  const { formData } = props;
   //   const [openTradeModal, setOpenTradeModal] = useState<boolean>(false);
   const { dispatch } = useContext(BookContext);
   const { state: user } = useContext(AppContext);
@@ -70,7 +74,6 @@ export const BookPage: () => JSX.Element = () => {
             key,
             duration: 2,
           });
-          console.log(response, 'res');
           route.push('/home');
         } else {
           message.error({
@@ -88,6 +91,7 @@ export const BookPage: () => JSX.Element = () => {
   return (
     <Container>
       <TradeBookForm
+        formData={formData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         errors={errors}
