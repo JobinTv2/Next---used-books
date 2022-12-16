@@ -7,16 +7,16 @@ import { Footer } from '../components/3-organisms/Footer';
 
 import '../App.css';
 import 'antd/dist/antd.min.css';
+import '../styles/global.css';
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
-    <Component {...pageProps}>
-      <AppValueProvider>
-        <BooksValueProvider>
-          <Header />
-          <Footer />
-        </BooksValueProvider>
-      </AppValueProvider>
-    </Component>
+    <AppValueProvider>
+      <BooksValueProvider>
+        <Header />
+        <Component {...pageProps}></Component>
+        <Footer />
+      </BooksValueProvider>
+    </AppValueProvider>
   );
 }
 

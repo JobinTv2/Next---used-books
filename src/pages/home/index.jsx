@@ -1,11 +1,12 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import tw from 'twin.macro';
 import { HomePage } from '../../components/5-pages/Home/Home';
 const Home = () => {
-  const location = useLocation();
-  const router = useNavigate();
-  if (location.pathname === '/') {
+  // const location = useLocation();
+  const router = useRouter();
+  const { pathname } = useRouter();
+  if (pathname === '/') {
     router('/sign-in');
   }
   return (

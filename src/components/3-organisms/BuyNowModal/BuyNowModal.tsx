@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import tw from 'twin.macro';
 import { Form, Input, message } from 'antd';
 import { Book } from '../../../types';
@@ -27,7 +27,7 @@ export const BuyNowModal: React.FC<Props> = (props) => {
   const { dispatch: bookDispatch } = useContext(BookContext);
   const [state, setState] = useState(user);
 
-  const route = useNavigate();
+  const route = useRouter();
   useEffect(() => {
     setState(user);
   }, [user]);
@@ -72,7 +72,7 @@ export const BuyNowModal: React.FC<Props> = (props) => {
             key,
             duration: 2,
           });
-          route(0);
+          route.reload();
         }
       } catch (error) {
         console.log(error);
