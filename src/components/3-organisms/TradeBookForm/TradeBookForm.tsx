@@ -25,7 +25,7 @@ export const TradeBookForm: React.FC<Props> = (props) => {
   const { handleChange, handleSubmit, formData, errors } = props;
 
   return (
-    <Container>
+    <Container data-testid="book-form">
       <Form
         layout="vertical"
         className="w-full"
@@ -47,6 +47,7 @@ export const TradeBookForm: React.FC<Props> = (props) => {
                 placeholder={field?.fields?.placeholder}
                 name={field?.fields.name?.toLowerCase()}
                 onChange={handleChange}
+                data-testid={field?.fields.name?.toLowerCase()}
                 status={
                   Object.prototype.hasOwnProperty.call(
                     errors,

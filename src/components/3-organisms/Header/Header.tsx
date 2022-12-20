@@ -31,6 +31,7 @@ export const Header: React.FC = () => {
 
   return (
     <Container
+      data-testid="header"
       onClick={() => {
         // route('home');
       }}
