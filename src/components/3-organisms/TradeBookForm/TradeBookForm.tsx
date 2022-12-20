@@ -3,7 +3,6 @@ import tw from 'twin.macro';
 import { Button, Form, Input } from 'antd';
 import { FormikHandlers, FormikErrors } from 'formik';
 import { BookFormData } from '../../../pages/book/BookFormTypes';
-
 interface Props {
   handleChange: FormikHandlers['handleChange'];
   handleSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void;

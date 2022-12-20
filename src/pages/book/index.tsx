@@ -5,7 +5,6 @@ import { BookFormData } from './BookFormTypes';
 
 const Book: (props: { bookForm: BookFormData }) => JSX.Element = (props) => {
   const { bookForm } = props;
-  console.log(bookForm, 'form');
   return <BookPage formData={bookForm} />;
 };
 export default Book;

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { Book, Order, User } from '../../types';
 const baseUrl = 'http://localhost:3000';
-console.log(baseUrl);
 const Axios = axios.create({
   baseURL: baseUrl,
 });
@@ -134,6 +133,5 @@ export const getBookForm: () => any = async () => {
     method: 'GET',
     url: '/book/form',
   });
-  console.log(result);
   return result.data;
 };
