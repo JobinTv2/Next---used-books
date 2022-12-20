@@ -23,7 +23,10 @@
   },
   "include": [
     "src",
-    ".eslintrc.json"
+    ".eslintrc.json",
+    "**/*.config.js" ,
+    "**/*.spec.tsx" 
+    
   ],
   "exclude": [
     "node_modules"
