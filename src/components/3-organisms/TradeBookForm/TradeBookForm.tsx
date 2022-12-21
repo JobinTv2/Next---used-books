@@ -61,7 +61,11 @@ export const TradeBookForm: React.FC<Props> = (props) => {
           );
         })}
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button
+            type="primary"
+            htmlType="submit"
+            data-testid="book-form-button"
+          >
             Submit
           </Button>
         </Form.Item>

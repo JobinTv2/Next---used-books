@@ -383,5 +383,6 @@ describe('Book', () => {
     expect(screen.getByTestId('price')).toBeInTheDocument();
     expect(screen.getByTestId('description')).toBeInTheDocument();
     expect(screen.getByTestId('category')).toBeInTheDocument();
+    expect(screen.getByTestId('book-form-button')).toBeInTheDocument();
   });
 });
