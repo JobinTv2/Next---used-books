@@ -49,13 +49,14 @@ export const SignInForm: React.FC = () => {
   });
 
   return (
-    <Container>
+    <Container data-testid="sign-in-form">
       <Form layout="vertical" className="w-80">
         <Form.Item label="E-mail" className="font-sans font-semibold">
           <Input
             placeholder="Enter e-mail"
             name="email"
             onChange={handleChange}
+            data-testid="sign-in-mail-input"
             status={
               Object.prototype.hasOwnProperty.call(errors, 'email')
                 ? 'error'
@@ -70,6 +71,7 @@ export const SignInForm: React.FC = () => {
             placeholder="Enter password"
             name="password"
             onChange={handleChange}
+            data-testid="sign-in-password-input"
             status={
               Object.prototype.hasOwnProperty.call(errors, 'password')
                 ? 'error'
@@ -79,10 +81,13 @@ export const SignInForm: React.FC = () => {
         </Form.Item>
 
         <Form.Item>
-          <Checkbox> Keep me logged in</Checkbox>
+          <Checkbox data-testid="sign-in-keep-logged">
+            Keep me logged in
+          </Checkbox>
           <Button
             className="bg-[#5C60F5] w-full"
             type="primary"
+            data-testid="sign-in-form-submit"
             onClick={() => {
               handleSubmit();
             }}
@@ -91,7 +96,7 @@ export const SignInForm: React.FC = () => {
           </Button>
         </Form.Item>
 
-        <Text>
+        <Text data-testid="sign-in-form-sign-up-link">
           {`Don't have an account? `}
           <Text
             className="text-[#FF8C00] cursor-pointer"

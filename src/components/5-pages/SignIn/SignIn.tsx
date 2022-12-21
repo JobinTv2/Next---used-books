@@ -6,7 +6,7 @@ export const SignIn: React.FC = () => {
   return (
     <Container>
       <LeftContainer>
-        <TextContainer>
+        <TextContainer data-testid="sign-in-head">
           <Heading>{`Let's Read at Home`}</Heading>
           <Paragraph>{`Explore the collection and shop for books online. You can find your favourite literature, novels, storybooks, and more on offer.`}</Paragraph>
           <Round />
