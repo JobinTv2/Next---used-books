@@ -1,5 +1,5 @@
 import React from 'react';
-import Book from '../../../pages/book';
+import Book, { getStaticProps } from '../../../pages/book';
 import { render, screen } from '@testing-library/react';
 import '../../matchMedi.mock';
 import { BookFormData } from '../../../pages/book/BookFormTypes';
@@ -384,5 +384,10 @@ describe('Book', () => {
     expect(screen.getByTestId('description')).toBeInTheDocument();
     expect(screen.getByTestId('category')).toBeInTheDocument();
     expect(screen.getByTestId('book-form-button')).toBeInTheDocument();
+  });
+
+  it('getStaticProps returns form data', async () => {
+    const response = await getStaticProps();
+    expect(response).toEqual({ props: { bookForm: data } });
   });
 });
