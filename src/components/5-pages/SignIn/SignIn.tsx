@@ -12,7 +12,7 @@ export const SignIn: React.FC = () => {
           <Round />
         </TextContainer>
       </LeftContainer>
-      <SignInForm />
+      <SignInForm data-testid="signup-form" />
     </Container>
   );
 };

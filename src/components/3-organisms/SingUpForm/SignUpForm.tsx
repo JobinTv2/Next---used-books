@@ -60,6 +60,7 @@ export const SignUPForm: React.FC = () => {
             placeholder="Enter full name"
             name="name"
             onChange={handleChange}
+            data-testid="signup-input-name"
             status={
               Object.prototype.hasOwnProperty.call(errors, 'name')
                 ? 'error'
@@ -72,6 +73,7 @@ export const SignUPForm: React.FC = () => {
             placeholder="Enter e-mail"
             name="email"
             onChange={handleChange}
+            data-testid="signup-input-email"
             status={
               Object.prototype.hasOwnProperty.call(errors, 'email')
                 ? 'error'
@@ -84,6 +86,7 @@ export const SignUPForm: React.FC = () => {
             placeholder="Enter phone no."
             name="phone"
             onChange={handleChange}
+            data-testid="signup-input-phone"
             status={
               Object.prototype.hasOwnProperty.call(errors, 'phone')
                 ? 'error'
@@ -96,6 +99,7 @@ export const SignUPForm: React.FC = () => {
             placeholder="Enter password"
             name="password"
             onChange={handleChange}
+            data-testid="signup-input-password"
             status={
               Object.prototype.hasOwnProperty.call(errors, 'password')
                 ? 'error'
@@ -107,6 +111,7 @@ export const SignUPForm: React.FC = () => {
           <Button
             className="bg-[#5C60F5] w-full"
             type="primary"
+            data-testid="signup-submit"
             onClick={() => {
               // handleClick();
               handleSubmit();
@@ -116,7 +121,7 @@ export const SignUPForm: React.FC = () => {
           </Button>
         </Form.Item>
 
-        <Text>
+        <Text data-testid="sign-in-link">
           {`Aleady have an account? `}
           <Text
             className="text-[#FF8C00] cursor-pointer"
