@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import tw from 'twin.macro';
-import { Form, Button, Input, Checkbox, message } from 'antd';
+import { Form, Input, Checkbox, message } from 'antd';
 import * as Yup from 'yup';
 import { loginApi } from '../../../lib/api/API';
 import { AppContext } from '../../../context/appContext';
+import { Button } from '../../1-atoms/Button';
 
 const signInSchema = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -87,8 +88,8 @@ export const SignInForm: React.FC = () => {
           <Button
             className="bg-[#5C60F5] w-full"
             type="primary"
-            data-testid="sign-in-form-submit"
-            onClick={() => {
+            testId="sign-in-form-submit"
+            handleSubmit={() => {
               handleSubmit();
             }}
           >
