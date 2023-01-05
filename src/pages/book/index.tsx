@@ -9,12 +9,16 @@ const Book: (props: { bookForm: BookFormData }) => JSX.Element = (props) => {
 };
 export default Book;
 
-export const getStaticProps: () => Promise<{
+export const getServerSideProps: (ctx: any) => Promise<{
   props: {
     bookForm: BookFormData;
   };
-}> = async () => {
-  const response = await getBookForm();
+}> = async (ctx) => {
+  const cookie: { token: string } = ctx.req.cookies;
+  let response = null;
+  if (cookie?.token !== '') {
+    response = await getBookForm(cookie?.token);
+  }
   return {
     props: {
       bookForm: response,

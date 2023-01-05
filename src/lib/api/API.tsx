@@ -128,9 +128,10 @@ export const createOrderApi: (body: Order, token: string) => any = async (
   });
 };
 
-export const getBookForm: () => any = async () => {
+export const getBookForm: (token: string) => any = async (token) => {
   const result = await Axios({
     method: 'GET',
+    headers: { authorization: `Bearer ${token}` },
     url: '/book/form',
   });
   return result.data;
